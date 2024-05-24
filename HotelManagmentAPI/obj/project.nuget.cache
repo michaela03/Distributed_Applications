@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LgKpr4NGhOMnheqVU26BVuyriW4hoEridh7/izhx2LEWLG8I/qGJcbFQAyFnYPRmjDWWODWHil3zDwOT4YvPXw==",
+  "dgSpecHash": "NAlHXm5M+Nq0uwNuMllFuQjJw5U1jgSgn0Y8j3GgTMkDCAM6OIga9w5OMu8wHhdG3p4Ybmp5DcAV1vhkeu2Ibw==",
   "success": true,
-  "projectFilePath": "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\HotelManagmentAPI\\HotelManagmentAPI.csproj",
+  "projectFilePath": "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\Distributed_Applications\\HotelManagmentAPI\\HotelManagmentAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Miki\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Miki\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

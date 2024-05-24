@@ -52,45 +52,35 @@ namespace HotelManagmentAPI.Controllers
         [ProducesResponseType(400)]
         public IActionResult CreateReservation([FromBody] ReservationDto reservationDto)
         {
-            try
+            if (reservationDto == null)
+                return BadRequest(ModelState);
+
+            var reservation = _reservationRepository.GetReservations()
+                .Where(r => r.ClientID == reservationDto.ClientID)
+                .FirstOrDefault();
+
+            if (reservation != null)
             {
-                // Check if the request body is null
-                if (reservationDto == null)
-                    return BadRequest();
-
-                // Check if a reservation with the same client ID already exists
-                if (_reservationRepository.GetReservationsByClient(reservationDto.ClientID).Any())
-                {
-                    ModelState.AddModelError("", "A reservation for this client already exists");
-                    return StatusCode(422, ModelState);
-                }
-
-                // Check if the ModelState is valid
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
-
-                // Map the DTO to the Reservation entity
-                var reservation = _mapper.Map<Reservation>(reservationDto);
-
-                // Attempt to create the reservation
-                if (!_reservationRepository.CreateReservation(reservation))
-                {
-                    ModelState.AddModelError("", "Something went wrong while saving the reservation");
-                    return StatusCode(500, ModelState);
-                }
-
-                // Map the created reservation back to DTO
-                var createdDto = _mapper.Map<ReservationDto>(reservation);
-
-                // Return a 201 Created response with the created reservation DTO
-                return CreatedAtAction(nameof(GetReservation), new { reservationID = createdDto.ReservationID }, createdDto);
+                ModelState.AddModelError("", "Reservation already exists!");
+                return StatusCode(422, ModelState);
             }
-            catch (Exception ex)
+
+            if (!ModelState.IsValid)
             {
-                // Log any unhandled exceptions
-                Console.WriteLine($"An error occurred: {ex.Message}");
-                return StatusCode(500, "An error occurred while processing the request");
+                return BadRequest(ModelState);
             }
+
+            var resMap = _mapper.Map<Reservation>(reservationDto);
+
+            if (!_reservationRepository.CreateReservation(resMap))
+            {
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok("Succsesfully created!");
+
+           
         }
 
 

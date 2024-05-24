@@ -54,47 +54,31 @@ namespace HotelManagmentAPI.Controllers
         [ProducesResponseType(400)]
         public IActionResult CreateReview([FromBody] ReviewDto reviewDto)
         {
-            try
+            if (reviewDto == null)
+                return BadRequest();
+
+            if (_reviewRepository.GetReviewsByClients(reviewDto.ClientID) != null)
             {
-                // Check if the request body is null
-                if (reviewDto == null)
-                    return BadRequest();
-
-                // Check if a review with the same client ID already exists
-                if (_reviewRepository.GetReviewsByClients(reviewDto.ClientID).Any())
-                {
-                    ModelState.AddModelError("", "A review for this client already exists");
-                    return StatusCode(422, ModelState);
-                }
-
-                // Check if the ModelState is valid
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
-
-                // Map the DTO to the Review entity
-                var review = _mapper.Map<Review>(reviewDto);
-
-                // Attempt to create the review
-                if (!_reviewRepository.CreateReview(review))
-                {
-                    ModelState.AddModelError("", "Something went wrong while saving the review");
-                    return StatusCode(500, ModelState);
-                }
-
-                // Map the created review back to DTO
-                var createdDto = _mapper.Map<ReviewDto>(review);
-
-                // Return a 201 Created response with the created review DTO
-                return CreatedAtAction(nameof(GetReview), new { reviewID = createdDto.ReviewID }, createdDto);
+                ModelState.AddModelError("", "Review already exists");
+                return StatusCode(422, ModelState);
             }
-            catch (Exception ex)
+
+            if (!ModelState.IsValid)
             {
-                // Log any unhandled exceptions
-                Console.WriteLine($"An error occurred: {ex.Message}");
-                return StatusCode(500, "An error occurred while processing the request");
+                return BadRequest(ModelState);
             }
+
+            var review = _mapper.Map<Review>(reviewDto);
+
+            if (!_reviewRepository.CreateReview(review))
+            {
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
+
+            var createdDto = _mapper.Map<ReviewDto>(review);
+            return CreatedAtAction(nameof(GetReview), new { reviewDto = createdDto.ReviewID }, createdDto);
         }
-
 
         [HttpPut("{reviewID}")]
         [ProducesResponseType(400)]

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using HotelManagmentMVC.Models;
 
 namespace HotelManagmentMVC.Data
 {
@@ -9,5 +10,6 @@ namespace HotelManagmentMVC.Data
             : base(options)
         {
         }
+        public DbSet<HotelManagmentMVC.Models.ClientViewModel> ClientViewModel { get; set; } = default!;
     }
 }

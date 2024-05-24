@@ -43,65 +43,26 @@ namespace HotelManagmentAPI.Repository
 
         public bool CreateReservation(Reservation reservation)
         {
-            try
-            {
-                _context.Reservations.Add(reservation);
-                return Save();
-            }
-            catch (Exception ex)
-            {
-                // Handle exception (e.g., log error)
-                Console.WriteLine($"Error creating reservation: {ex.Message}");
-                return false;
-            }
+           _context.Reservations.Add(reservation);
+            return Save();
         }
 
         public bool UpdateReservation(Reservation reservation)
         {
-            try
-            {
-                _context.Entry(reservation).State = EntityState.Modified;
-                return Save();
-            }
-            catch (Exception ex)
-            {
-                // Handle exception (e.g., log error)
-                Console.WriteLine($"Error updating reservation: {ex.Message}");
-                return false;
-            }
+           _context.Reservations.Update(reservation);
+            return Save();
         }
 
         public bool DeleteReservation(int reservationID)
         {
-            try
-            {
-                var reservation = _context.Reservations.Find(reservationID);
-                if (reservation == null)
-                    return false;
-
-                _context.Reservations.Remove(reservation);
-                return Save();
-            }
-            catch (Exception ex)
-            {
-                // Handle exception (e.g., log error)
-                Console.WriteLine($"Error deleting reservation: {ex.Message}");
-                return false;
-            }
+           _context.Reservations.Remove(GetReservation(reservationID));
+            return Save();
         }
 
         public bool Save()
         {
-            try
-            {
-                return _context.SaveChanges() >= 0;
-            }
-            catch (Exception ex)
-            {
-                // Handle exception (e.g., log error)
-                Console.WriteLine($"Error saving changes: {ex.Message}");
-                return false;
-            }
+           var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
         }
     }
 }

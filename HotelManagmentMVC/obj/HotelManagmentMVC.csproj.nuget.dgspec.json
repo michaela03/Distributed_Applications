@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\HotelManagmentMVC\\HotelManagmentMVC.csproj": {}
+    "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\Distributed_Applications\\HotelManagmentMVC\\HotelManagmentMVC.csproj": {}
   },
   "projects": {
-    "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\HotelManagmentMVC\\HotelManagmentMVC.csproj": {
+    "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\Distributed_Applications\\HotelManagmentMVC\\HotelManagmentMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\HotelManagmentMVC\\HotelManagmentMVC.csproj",
+        "projectUniqueName": "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\Distributed_Applications\\HotelManagmentMVC\\HotelManagmentMVC.csproj",
         "projectName": "HotelManagmentMVC",
-        "projectPath": "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\HotelManagmentMVC\\HotelManagmentMVC.csproj",
+        "projectPath": "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\Distributed_Applications\\HotelManagmentMVC\\HotelManagmentMVC.csproj",
         "packagesPath": "C:\\Users\\Miki\\.nuget\\packages\\",
-        "outputPath": "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\HotelManagmentMVC\\obj\\",
+        "outputPath": "C:\\Plovdiv_University\\Software_Engineering_2_year\\Summer_Semester\\Distibuted_Applications\\Distributed_Applications\\HotelManagmentMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.5, )"
@@ -65,9 +69,21 @@
               "target": "Package",
               "version": "[8.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[8.0.5, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
