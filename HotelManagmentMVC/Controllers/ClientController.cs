@@ -1,11 +1,13 @@
 ﻿using HotelManagmentMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Data;
 using System.Text;
 
 namespace HotelManagmentMVC.Controllers
 {
-   
+
+    
     public class ClientController : Controller
     {
         Uri baseAddress = new Uri("https://localhost:44341/api");
@@ -42,16 +44,93 @@ namespace HotelManagmentMVC.Controllers
         [HttpPost]
         public IActionResult Create(ClientViewModel client)
         {
-            string data = JsonConvert.SerializeObject(client);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = _client.PostAsync(_client.BaseAddress + "/Client/CreateClient", content).Result;
-
-            if (response.IsSuccessStatusCode)
+            try 
             {
-                return RedirectToAction("Index");
+                string data = JsonConvert.SerializeObject(client);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _client.PostAsync(_client.BaseAddress + "/Client/CreateClient", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return View(client);
+            }
+          
+            return View(client);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            try
+            {
+                ClientViewModel client = new ClientViewModel();
+                HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "/Client/GetClient/" + id).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    client = JsonConvert.DeserializeObject<ClientViewModel>(data);
+                }
+                return View(client);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return View();
+            }
+           
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ClientViewModel client)
+        {
+            try
+            {
+                string data = JsonConvert.SerializeObject(client);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _client.PutAsync(_client.BaseAddress + "/Client/UpdateClient", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return View(client);
             }
 
             return View(client);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                HttpResponseMessage response = _client.DeleteAsync(_client.BaseAddress + "/Client/DeleteClient/" + id).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

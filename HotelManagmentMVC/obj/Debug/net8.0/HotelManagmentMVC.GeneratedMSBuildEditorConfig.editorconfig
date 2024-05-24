@@ -58,6 +58,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Client/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Client/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Client/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,6 +76,46 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Reservation/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Reservation/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Reservation/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Reservation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Review/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Review/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Review/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Review/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Review/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Room/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Plovdiv_University/Software_Engineering_2_year/Summer_Semester/Distibuted_Applications/Distributed_Applications/HotelManagmentMVC/Views/Shared/Error.cshtml]

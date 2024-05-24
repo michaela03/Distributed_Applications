@@ -57,16 +57,16 @@ namespace HotelManagmentAPI.Controllers
             if (reviewDto == null)
                 return BadRequest();
 
-            if (_reviewRepository.GetReviewsByClients(reviewDto.ClientID) != null)
-            {
-                ModelState.AddModelError("", "Review already exists");
-                return StatusCode(422, ModelState);
-            }
+            //if (_reviewRepository.GetReviewsByClients(reviewDto.ClientID) != null)
+            //{
+            //    ModelState.AddModelError("", "Review already exists");
+            //    return StatusCode(422, ModelState);
+            //}
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             var review = _mapper.Map<Review>(reviewDto);
 
@@ -77,7 +77,7 @@ namespace HotelManagmentAPI.Controllers
             }
 
             var createdDto = _mapper.Map<ReviewDto>(review);
-            return CreatedAtAction(nameof(GetReview), new { reviewDto = createdDto.ReviewID }, createdDto);
+            return CreatedAtAction(nameof(GetReviews), new { reviewDto = createdDto.ReviewID }, createdDto);
         }
 
         [HttpPut("{reviewID}")]

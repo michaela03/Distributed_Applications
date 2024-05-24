@@ -11,5 +11,11 @@ namespace HotelManagmentMVC.Data
         {
         }
         public DbSet<HotelManagmentMVC.Models.ClientViewModel> ClientViewModel { get; set; } = default!;
+
+        public DbSet<HotelManagmentMVC.Models.ReservationViewModel> ReservationViewModel { get; set; } = default!;
+
+        public DbSet<HotelManagmentMVC.Models.ReviewViewModel> ReviewViewModel { get; set; } = default!;
+
+        public DbSet<HotelManagmentMVC.Models.RoomViewModel> RoomViewModel { get; set; } = default!;
     }
 }

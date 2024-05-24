@@ -55,20 +55,20 @@ namespace HotelManagmentAPI.Controllers
             if (reservationDto == null)
                 return BadRequest(ModelState);
 
-            var reservation = _reservationRepository.GetReservations()
-                .Where(r => r.ClientID == reservationDto.ClientID)
-                .FirstOrDefault();
+            //var reservation = _reservationRepository.GetReservations()
+            //    .Where(r => r.ClientID == reservationDto.ClientID)
+            //    .FirstOrDefault();
 
-            if (reservation != null)
-            {
-                ModelState.AddModelError("", "Reservation already exists!");
-                return StatusCode(422, ModelState);
-            }
+            //if (reservation != null)
+            //{
+            //    ModelState.AddModelError("", "Reservation already exists!");
+            //    return StatusCode(422, ModelState);
+            //}
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             var resMap = _mapper.Map<Reservation>(reservationDto);
 
