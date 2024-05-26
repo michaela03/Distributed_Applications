@@ -95,7 +95,7 @@ namespace HotelManagmentMVC.Controllers
             {
                 string data = JsonConvert.SerializeObject(client);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = _client.PutAsync(_client.BaseAddress + "/Client/UpdateClient", content).Result;
+                HttpResponseMessage response = _client.PutAsync(_client.BaseAddress + "/Client/UpdateClient/"+client.ClientID, content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {

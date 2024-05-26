@@ -19,6 +19,8 @@ namespace HotelManagmentAPI.Dto
        
         public DateTime DateOfBirth { get; set; }
 
+        public string? Address { get; set; }
+
     
     }
 
