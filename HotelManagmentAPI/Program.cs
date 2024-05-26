@@ -3,6 +3,7 @@ using HotelManagmentAPI.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using HotelManagmentAPI.Helper;
 using HotelManagmentAPI.Repository;
+using HotelManagmentAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagementAPI v1"));
 }
-
+app.UseMiddleware<ApiKeyMiddleware>();
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthorization();

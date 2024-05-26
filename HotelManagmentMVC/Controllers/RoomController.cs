@@ -14,6 +14,8 @@ namespace HotelManagmentMVC.Controllers
         {
             _client = new HttpClient();
             _client.BaseAddress = baseAddress;
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Add("XApiKey", "pgH7QzFHJx4w46fI~5Uzi4RvtTwlEXp");
         }
 
         [HttpGet]

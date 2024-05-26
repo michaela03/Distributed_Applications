@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Data;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace HotelManagmentMVC.Controllers
@@ -18,6 +20,8 @@ namespace HotelManagmentMVC.Controllers
         {
             _client = new HttpClient();
             _client.BaseAddress = baseAddress;
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Add("XApiKey", "pgH7QzFHJx4w46fI~5Uzi4RvtTwlEXp");
         }
 
         [HttpGet]
