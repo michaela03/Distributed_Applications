@@ -1,5 +1,7 @@
-﻿using HotelManagmentMVC.Models;
+﻿using HotelManagmentMVC.Data;
+using HotelManagmentMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Data;
 using System.Net.Http;
@@ -14,7 +16,6 @@ namespace HotelManagmentMVC.Controllers
     {
         Uri baseAddress = new Uri("https://localhost:44341/api");
         private readonly HttpClient _client;
-        
 
         public ClientController()
         {
@@ -22,22 +23,50 @@ namespace HotelManagmentMVC.Controllers
             _client.BaseAddress = baseAddress;
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Add("XApiKey", "pgH7QzFHJx4w46fI~5Uzi4RvtTwlEXp");
+          
         }
 
+        // GET: Clients
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             List<ClientViewModel> clientList = new List<ClientViewModel>();
-            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "/Client/GetClients").Result;
+            string requestUri = "https://localhost:44341/api/Client/GetClients";
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                requestUri = $"https://localhost:44341/api/Client/GetClientByName/clientName/{searchString}";
+            }
+
+            HttpResponseMessage response = await _client.GetAsync(requestUri);
 
             if (response.IsSuccessStatusCode)
             {
-                string data = response.Content.ReadAsStringAsync().Result;
-                clientList = JsonConvert.DeserializeObject<List<ClientViewModel>>(data);
+                string data = await response.Content.ReadAsStringAsync();
+
+                // Check if the data is a single object or an array
+                if (data.Trim().StartsWith("["))
+                {
+                    clientList = JsonConvert.DeserializeObject<List<ClientViewModel>>(data);
+                }
+                else
+                {
+                    var singleClient = JsonConvert.DeserializeObject<ClientViewModel>(data);
+                    if (singleClient != null)
+                    {
+                        clientList.Add(singleClient);
+                    }
+                }
+            }
+            else
+            {
+                TempData["Error"] = $"Error retrieving client list. Status code: {response.StatusCode}";
             }
 
+            ViewData["SearchString"] = searchString;
             return View(clientList);
         }
+
 
         [HttpGet]
         public IActionResult Create()

@@ -5,7 +5,13 @@
 }
 
 <h1>Clients</h1>
-
+<form method="get" asp-action="Index" class="mb-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Въведете име на потребител..." value="@ViewData["ClientController"]" name="searchString" style="width:400px" />
+            <button type="submit" class="btn btn-primary">Търсене</button>
+            <a asp-action="Index" class="btn btn-secondary">Покажи всички потребители</a>
+        </div>
+    </form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
