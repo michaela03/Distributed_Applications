@@ -24,4 +24,12 @@
     <Folder Include="Identity\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\Ammoa-Luxury-Hotel-Spa-Resort-Nikiti-Exterior %281%29.jpg" />
+    <None Include="wwwroot\images\Ammoa-Luxury-Hotel-Spa-Resort-Nikiti-Exterior.jpg" />
+    <None Include="wwwroot\images\NoSeaView.jpg" />
+    <None Include="wwwroot\images\panorama-suite-sea-front %281%29.jpg" />
+    <None Include="wwwroot\images\panorama-suite-sea-front.jpg" />
+  </ItemGroup>
+
 </Project>

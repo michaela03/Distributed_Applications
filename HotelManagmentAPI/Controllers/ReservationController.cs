@@ -13,11 +13,15 @@ namespace HotelManagmentAPI.Controllers
     {
         private readonly IReservationRepository _reservationRepository;
         private readonly IMapper _mapper;
+        private readonly IClientsRepository _clientsRepository;
 
-        public ReservationController(IReservationRepository reservationRepository, IMapper mapper)
+        public ReservationController(IReservationRepository
+            reservationRepository, IMapper mapper, 
+            IClientsRepository clientsRepository)
         {
             _reservationRepository = reservationRepository;
             _mapper = mapper;
+            _clientsRepository = clientsRepository;
         }
 
         [HttpGet]
@@ -50,27 +54,23 @@ namespace HotelManagmentAPI.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public IActionResult CreateReservation([FromBody] ReservationDto reservationDto)
+        public IActionResult CreateReservation([FromQuery] int clientID,[FromBody] ReservationDto reservationDto)
         {
             if (reservationDto == null)
                 return BadRequest(ModelState);
 
-            //var reservation = _reservationRepository.GetReservations()
-            //    .Where(r => r.ClientID == reservationDto.ClientID)
-            //    .FirstOrDefault();
+            /*var reservations = _reservationRepository.GetReservations()
+                .Where(r => r.ClientID == clientID);
 
-            //if (reservation != null)
-            //{
-            //    ModelState.AddModelError("", "Reservation already exists!");
-            //    return StatusCode(422, ModelState);
-            //}
-
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-
+            if (reservations != null)
+            {
+                ModelState.AddModelError("", "Reservation already exists");
+                return StatusCode(422, ModelState);
+            }
+*/
             var resMap = _mapper.Map<Reservation>(reservationDto);
+
+           // resMap.Client = _clientsRepository.GetClient(resMap.ClientID);
 
             if (!_reservationRepository.CreateReservation(resMap))
             {

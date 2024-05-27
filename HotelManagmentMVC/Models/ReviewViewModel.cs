@@ -20,5 +20,7 @@ namespace HotelManagmentMVC.Models
 
         [Required]
         public DateTime Date { get; set; }
+
+       
     }
 }

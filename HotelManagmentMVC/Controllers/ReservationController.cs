@@ -9,6 +9,7 @@ namespace HotelManagmentMVC.Controllers
     {
         Uri baseAddress = new Uri("https://localhost:44341/api");
         private readonly HttpClient _client;
+  
 
 
         public ReservationController()
@@ -41,12 +42,17 @@ namespace HotelManagmentMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ReservationViewModel reservation)
+        public IActionResult Create(ReservationViewModel reservation, ClientViewModel client, RoomViewModel room)
         {
             try
             {
+                
+                reservation.ClientID = client.ClientID;
+                reservation.RoomID = room.RoomID;
+
                 string data = JsonConvert.SerializeObject(reservation);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
                 HttpResponseMessage response = _client.PostAsync(_client.BaseAddress + "/Reservation", content).Result;
 
                 if (response.IsSuccessStatusCode)
@@ -54,7 +60,6 @@ namespace HotelManagmentMVC.Controllers
                     return RedirectToAction("Index");
                 }
             }
-
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
@@ -62,6 +67,7 @@ namespace HotelManagmentMVC.Controllers
 
             return View();
         }
+
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -112,6 +118,21 @@ namespace HotelManagmentMVC.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            ReservationViewModel reservation = new ReservationViewModel();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "/Reservation/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                reservation = JsonConvert.DeserializeObject<ReservationViewModel>(data);
+            }
+
+            return View(reservation);
         }
     }
 }

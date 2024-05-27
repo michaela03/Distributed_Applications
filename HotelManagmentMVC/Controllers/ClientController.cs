@@ -165,6 +165,28 @@ namespace HotelManagmentMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            try
+            {
+                ClientViewModel client = new ClientViewModel();
+                HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "/Client/GetClient/" + id).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    client = JsonConvert.DeserializeObject<ClientViewModel>(data);
+                }
+                return View(client);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return View();
+            }
+        }
     }
 }
 
